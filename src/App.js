@@ -13,7 +13,6 @@ function App() {
           <Route path="/" Component={Home} />
           <Route path="/features" Component={Features} />
           <Route path="/pricing" Component={Pricing} />
-          <Route path="/pricing2" Component={Pricing} />
         </Routes>
     </div>
   );
