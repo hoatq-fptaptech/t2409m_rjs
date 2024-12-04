@@ -1,17 +1,35 @@
-import { useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
 export default function Home(){
-    const [x,setX] = useState(10); // x = 10 nhưng x là 1 state
-    function changeX(){
-        setX(x+1);// x = x + 1;
+    const [product,setProduct] = useState({});
+    function callApi(){
+        const url = "https://dummyjson.com/products/1";
+        fetch(url).then(rs => rs.json())
+            .then(rs=>{
+                setProduct(rs);
+            })
     }
+    useEffect(()=>{
+        callApi();
+    },[]);
     return (
         <section>
             <Container>
-                <h1>X = {x}</h1>
-                <Button onClick={changeX} variant="primary" type="button">Increment</Button>
-                <Button  variant="danger" type="button">Decrement</Button>
+                <Row>
+                    <Col xs={3}>
+                    <Card>
+                        <Card.Img variant="top" src={product.thumbnail} />
+                        <Card.Body>
+                            <Card.Title>{product.title}</Card.Title>
+                            <Card.Text>
+                            {product.description}
+                            </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
             </Container>
         </section>
     )
