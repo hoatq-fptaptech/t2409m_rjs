@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./../../assets/css/forecast.css";
 export default function Pricing(){
-    const [forecast,setForecast] = useState([1,2,3,4,5,6,7,8]);
+    const [forecast,setForecast] = useState([]);
+    function getData(){
+        const url = "https://api.openweathermap.org/data/2.5/forecast?q=Hanoi&appid=09a71427c59d38d6a34f89b47d75975c&units=metric";
+        fetch(url).then(rs=>rs.json())
+        .then(rs=>{
+            setForecast(rs.list);
+        })
+    }
+    useEffect(()=>{
+        getData();
+    },[])
     return (
         <section>
             <Container>
