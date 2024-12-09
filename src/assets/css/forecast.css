@@ -1,0 +1,13 @@
+body{
+    background-image: url("/images/sky.jpg");
+    background-size: cover;
+}
+.item{
+    float: left;
+    height: 180px;
+    background-color: #00000050;
+    border-radius: 8px;
+}
+.item img{
+    transform: translate(150px,-100px);
+}
