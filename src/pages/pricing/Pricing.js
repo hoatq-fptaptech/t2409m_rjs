@@ -22,10 +22,10 @@ export default function Pricing(){
                             return (
                                 <Col xs={3}>
                                     <div className="item w-100">
-                                        <p className="text-time text-white">2024-12-09 09:00:00</p>
-                                        <h2 className="text-white">18<sup>o</sup>C</h2>
-                                        <p className="text-white description">Trời lạnh, ít mây</p>
-                                        <img src="https://openweathermap.org/img/wn/04d@2x.png"/>
+                                        <p className="text-time text-white">{e.dt_txt}</p>
+                                        <h2 className="text-white">{e.main.temp}<sup>o</sup>C</h2>
+                                        <p className="text-white description">{e.weather[0].description}</p>
+                                        <img src={"https://openweathermap.org/img/wn/"+e.weather[0].icon+"@2x.png"}/>
                                     </div>
                                 </Col>
                             )
